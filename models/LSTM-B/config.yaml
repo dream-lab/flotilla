@@ -1,0 +1,28 @@
+model_details:
+  model_id: LSTM-B
+  model_class: LSTM_B_Model
+  model_tags: [LSTM]
+  suitable_datasets: [WikiText]
+
+default_training_config:
+  use_custom_dataloader: True
+  custom_loader_args: None
+
+  use_custom_trainer: True
+  custom_trainer_args:
+    seq_len: 50
+    clip: 0.25
+    lr: 0.002
+    batch_size: 16
+
+  use_custom_validator: True
+  custom_validator_args:
+    seq_len: 50
+    batch_size: 16
+
+  model_args:
+    vocab_size: 29472
+    embedding_dim: 256  # 400 in the paper
+    hidden_dim: 512  # 1150 in the paper
+    num_layers: 2  # 3 in the paper
+    dropout_rate: 0.65

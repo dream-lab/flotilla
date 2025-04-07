@@ -1,0 +1,28 @@
+model_details:
+  model_id: LSTM
+  model_class: LSTMModel
+  model_tags: [LSTM]
+  suitable_datasets: [timeseries]
+
+default_training_config:
+  use_custom_dataloader: True
+  custom_loader_args:
+    lookback: 5
+    pred_forward: 2
+    normalize_data: True
+
+  use_custom_trainer: True
+  custom_trainer_args:
+    clip: 5
+
+  use_custom_validator: True
+  custom_validator_args: 
+    plot_metrics: False
+    dump_metrics: False
+
+  model_args:
+    input_dim: 1
+    hidden_dim: 128
+    output_dim: 2
+    layer_num: 1
+    cell: LSTM

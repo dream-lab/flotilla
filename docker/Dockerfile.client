@@ -1,0 +1,8 @@
+FROM pytorch/pytorch
+ENV DOCKER_RUNNING=True MQTT_IP=10.24.24.32 MQTT_PORT=1884
+WORKDIR /src
+COPY /src/client/requirements.txt .
+RUN python -m pip install -r requirements.txt
+COPY docker/client_entrypoint.sh .
+COPY src .
+CMD ["bash","./client_entrypoint.sh"]

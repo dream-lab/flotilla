@@ -1,0 +1,20 @@
+comm_config:
+  mqtt:
+    type: client
+    client_name: Orin
+    mqtt_broker: 10.24.24.31
+    mqtt_broker_port: 1884
+    mqtt_sub_timeout_s: 30
+    heartbeat_timeout_s: 15
+  grpc:
+    workers: 8
+    sync_port: 50053
+    async_port: 50054
+dataset_config:
+  datasets_dir_path: ./data/CIFAR-10/train-partition-0.pth
+general_config:
+  temp_dir_path: temp
+  cleanup_session_on_exit: False
+  cleanup_model_cache_on_exit: False
+  cleanup_temp_on_exit: False
+  use_gpu: True

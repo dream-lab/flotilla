@@ -1,0 +1,22 @@
+comm_config:
+  mqtt:
+    type: client
+    mqtt_broker: <mqtt_ip>
+    client_name: <client_name>
+    mqtt_broker_port: <mqtt_port>
+    mqtt_sub_timeout_s: <mqtt_sub_timeout>
+    mqtt_server_topic: advert_server
+    mqtt_client_topic: advert_client
+    heartbeat_timeout_s: <hearatbeat_timeout>
+  grpc:
+    workers: 8
+    sync_port: 50053
+    async_port: 50054
+dataset_config:
+  datasets_dir_path: <dataset_path>
+general_config:
+  temp_dir_path: temp
+  cleanup_session_on_exit: False
+  cleanup_model_cache_on_exit: False
+  cleanup_temp_on_exit: False
+  use_gpu: <True/False>

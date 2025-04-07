@@ -1,0 +1,13 @@
+model_details:
+  model_id: VGG
+  model_class: VGG_class
+  model_type: CNN
+  suitable_datasets: [CIFAR10]
+training_config:
+  hyperparameters:
+    learning_rate: 0.03
+    weight_decay: 0.001
+  use_custom_dataloader : False
+  custom_dataloader_filepath : None
+  use_custom_trainer: False
+  custom_trainer_filepath: None

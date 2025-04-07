@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  redis:
+    image: redis:latest
+    container_name: redis_server
+    command: redis-server --save 86400 1
+    ports:
+      - "6379:6379"
+
+  mqtt5:
+    image: eclipse-mosquitto
+    container_name: mqtt_broker
+    ports:
+      - "1884:1883"
+      - "9002:9001"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./data:/mosquitto/data
+      - ./log:/mosquitto/log
+
+
+volumes:
+  config:
+  data:
+  log:
+
+
+networks:
+  default:
+    name: flotilla-network

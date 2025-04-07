@@ -1,0 +1,31 @@
+session_config:
+  session_id: testing
+  aggregator: None
+  client_selection: random_subset
+  percentage_client_selection: 100.0
+  save_metrics_to_file: True
+
+benchmark_config:
+  bench_model_id: MobileNet
+  bench_model_dir: ./models/MobileNet
+  bench_model_class: MobileNet_class
+  bench_minibatch_count: 100
+  bench_batch_size: 16
+  learning_rate: 0.001
+  bench_timeout_duration_s: 20
+
+train_config:
+  model_id: MobileNet
+  model_dir: ./models/MobileNet
+  model_class: MobileNet_class
+  num_training_rounds: 10
+  epochs: 5
+  batch_size: 16
+  learning_rate: 0.001
+  train_timeout_duration_s: 60
+  validation_data_path: ./data/CIFAR-10/test.pth
+  validation_batch_size: 100
+  loss_function: crossentropy
+  loss_function_custom: True
+  optimizer: adam
+  optimizer_custom: True

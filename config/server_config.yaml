@@ -1,0 +1,25 @@
+comm_config:
+  mqtt:
+    type: server
+    mqtt_broker: <mqtt_broker_ip>
+    mqtt_broker_port: <mqtt_broker_port>
+    mqtt_sub_timeout_s: <mqtt_timeout>
+    mqtt_server_topic: advert_server
+    mqtt_client_topic: advert_client
+    mqtt_heartbeat_interval_s: <mqtt_heartbeat_interval>
+    num_heartbeats_timestamp_cached: <num_heartbeats_cached>
+    max_heartbeat_miss_threshold: <max_num_heartbeats_missed>
+  grpc:
+    max_message_length: 1048576000 # (1000*1024*1024)
+    chunk_size_bytes: 1024
+    timeout_s: <grpc_timeout>
+  restful:
+    rest_hostname: 0.0.0.0
+    rest_port: 12345
+state:
+  state_location: redis
+  state_hostname: <redis_ip>
+  state_port: <redis_port>
+checkpoint_dir_path: <path_to_checkpoint_dir>
+validation_data_dir_path: <path_to_validation_data>
+temp_dir_path: ./scratch
