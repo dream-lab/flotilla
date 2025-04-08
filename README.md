@@ -31,6 +31,9 @@ Flotilla consists of a leader and a set of clients. The *leader* runs on a centr
 
 ---
 ---
+## Note
+Flotilla has been tested with Python 3.6.15 and above.
+
 ## Bare Metal Installation
 
 This installation is for a bare-metal distributed setup where the server and each client is running on different machines. First, make sure you have Python and  all the related dependencies like GCC installed. You can follow these steps:
@@ -321,13 +324,8 @@ python flo_session.py <path_to_config> --federated_server_endpoint <server_ip>:<
 
 This should sucessfully start the session.
 
-## Flow diagram of the framework:
-  
-![flow](flotilla_architecture.pdf)
-
-## Note
-   Tested with Python 3.6.15 and above.
-
+---
+---
 ## License and Copyright
 This code is released under Apache License, Version 2.0
 https://www.apache.org/licenses/LICENSE-2.0.txt
