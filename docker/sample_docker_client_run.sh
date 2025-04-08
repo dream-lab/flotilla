@@ -1,31 +1,13 @@
-# docker rm -f $(docker ps -aq)
-# cpu=0
-# for i in $(seq 1 208); do
-#         mkdir -p client_$i
-#         docker run --network rigel-overlay \
-#                 --env MQTT_IP=10.0.4.254 --env MQTT_PORT=1883 \
-#                 --memory="4096m" \
-#                 --cpuset-cpus="$cpu" \
-#                 --mount type=bind,source=/root/client_$i,target=/fedml-ng/logs \
-#                 --mount type=bind,source=/root/client_data/part_$i,target=/fedml-ng/data \
-#                 --log-driver=none \
-#                 -dti flotilla-client
-#         echo "$cpu"
-#         cpu=$(($cpu+1))
-# done
-# docker stats
-
-# docker rm -f $(docker ps -aq)
 cpu=0
-for i in $(seq 18 20); do
+for i in $(seq 0 <num_clients>); do
         mkdir -p ../logs/client_$i
         docker run --network flotilla-network \
-                --env MQTT_IP=10.24.24.32 --env MQTT_PORT=1884 \
+                --env MQTT_IP=<mqtt_broker_ip> --env MQTT_PORT=<mqtt_broker_port> \
                 --name="client_$i" \
                 --memory="4096m" \
                 --cpuset-cpus="$cpu" \
-                --mount type=bind,source=/home/fedml/flotilla_final/fedml-ng/logs/client_$i,target=/src/logs \
-                --mount type=bind,source=/home/fedml/flotilla_final/fedml-ng/client_data_CIFAR10/part_$i,target=/src/data \
+                --mount type=bind,source=<absolute_path_of_the_dir_created_in_line_3>,target=/src/logs \
+                --mount type=bind,source=<absolute_path_to_client_i_training_data>,target=/src/data \
                 --log-driver=json-file \
                 -dti flotilla-client:latest
         echo "$cpu"

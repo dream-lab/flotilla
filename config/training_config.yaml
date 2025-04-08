@@ -1,51 +1,52 @@
 session_config:
-  session_id: dev
-  use_gpu: True
-  aggregator: fedavg
-  aggregator_args: None
-  client_selection: fedavg
-  client_selection_args:
-    client_fraction: 1
-  checkpoint_interval: 5
-  generate_plots: False
+  session_id: <session_id>
+  use_gpu: <True/False>
+  aggregator: <aggregator_from_src/server/aggregation>
+  aggregator_args: <any_arguments_for_the_aggregator>
+  client_selection: <client_selection_from_src/server/clientselection>
+  client_selection_args: <any_arguments_for_the_clientselection>
+  checkpoint_interval: <num_of_rounds_to_checkpoint_after>
+  generate_plots: <whether_to_generate_accuracy_plots>
 
 benchmark_config:
-  model_id: LeNet5
-  model_dir: ./models/LeNet5
-  model_class: LeNet5_class
-  dataset: EMNIST_IID
-  bench_minibatch_count: 500
-  batch_size: 16
-  learning_rate: 0.001
-  timeout_duration_s: 120
+  skip_benchmark: <True/False>
+  model_id: <benchmark_model_id>
+  model_dir: <dir_for_model_files>
+  model_class: <model_class>
+  dataset: <benchmark_dataset_id>
+  batch_size: <benchmark_batchsize>
+  learning_rate: <benchmark_lr>
+  bench_minibatch_count: <num_minibatches_to_benchmark>
+  timeout_duration_s: <benchmark_timeout>
 
 server_training_config:
-  model_dir: ./models/LeNet5
-  global_model_validation_batch_size: 100
-  num_training_rounds: 50
+  model_dir: <dir_for_model_files>
+  global_model_validation_batch_size: <validation_batch_size_on_the_server>
+  num_training_rounds: <max_num_of_training_rounds>
+  global_timeout_duration_s: <training_timeout>
 
 client_training_config:
-  model_id: LeNet5
-  model_class: LeNet5_class
-  epochs: 1
-  dataset: EMNIST_IID
-  batch_size: 16
-  learning_rate: 0.001
-  train_timeout_duration_s: 300
-  loss_function: crossentropy
-  loss_function_custom: True
-  optimizer: adam
-  optimizer_custom: True
+  model_id: <train_model_id>
+  model_class: <train_model_class>
+  epochs: <num_epoch_to_train_per_rounds>
+  dataset: <train_dataset_id>
+  batch_size: <train_batch_size>
+  learning_rate: <train_learning_rate>
+  train_timeout_duration_s: <timeout_per_round>
+  loss_function: <loss_function_id/None>
+  loss_function_custom: <True/False>
+  optimizer: <optimizer_id/None>
+  optimizer_custom: <True/False>
 
 model_config:
-  use_custom_dataloader: False
-  custom_loader_args: None
+  use_custom_dataloader: <True/False>
+  custom_loader_args: <agrs_for_dataloader/None>
 
-  use_custom_trainer: False
-  custom_trainer_args: None
+  use_custom_trainer: <True/False>
+  custom_trainer_args: <agrs_for_trainer/None>
 
-  use_custom_validator: False
-  custom_validator_args: None
+  use_custom_validator: <True/False>
+  custom_validator_args: <agrs_for_validator/None>
 
-  model_args:
-    num_classes: 10
+  model_args: <agrs_for_model_args/None>
+

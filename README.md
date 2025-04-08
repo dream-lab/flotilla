@@ -41,6 +41,7 @@ This installation is for a bare-metal distributed setup where the server and eac
 1. Clone the repo into your respective server and client machines:
     ```bash
     git clone git@github.com:dream-lab/flotilla.git
+    cd flotilla
     ``` 
 2. Use the following command to install the required dependencies from the `requirements.txt` file using pip:
     
@@ -66,7 +67,7 @@ This installation is for a bare-metal distributed setup where the server and eac
 #### For Nvidia Jetson devices please make sure to install torch and torchvision as per your device's configuration. Please refer <a href="https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048" target="_blank">here.</a>
 
 ## Quick Setup
-To test a sample Federated Learning (FL) workflow, follow these instructions for running the Flotilla server and one Flotilla client on the same machine to train the FACNN model on CIFAR10_IID
+To test a sample Federated Learning (FL) workflow, follow these instructions for running the Flotilla server and one Flotilla client on the same machine to train the FACNN model on CIFAR10_IID.
 
 After cloning the GitHub repository, install the necessary requirements for both the server and the client. Optionally, regenerate the protocol buffers. Then, download and unzip the following file
 
@@ -77,7 +78,7 @@ mv data src/
 mv val_data src/
 ```
 
-To run the MQTT Broker, use the following command:
+To run the MQTT Broker and the Redis server, use the following command:
 ```bash
 cd docker && docker-compose up -d
 ```
@@ -109,8 +110,8 @@ Before running the server and client, make sure to configure the MQTT settings c
 
    ```yaml
    mqtt:
-     mqtt_broker: "your_mqtt_broker_url"
-     mqtt_broker_port: 1883  # Adjust the port if necessary
+     mqtt_broker: <mqtt_broker_ip>
+     mqtt_broker_port: <mqtt_broker_port>  # Adjust the port if necessary
    ```
 ### Configuration of the server
 On the server, you also need to configure the Redis port in `server_config.yaml`. If you want Flotilla to run using Redis, configure:
@@ -120,7 +121,7 @@ On the server, you also need to configure the Redis port in `server_config.yaml`
     state_hostname: <redis_server_ip>
     state_port: <redis_server_port>
    ```
-If you want Flotilla to run using Redis, configure:
+If you want Flotilla to run without Redis, with the states being maintained in-memory, configure:
    ```yaml
    state:
     state_location: inmemory
@@ -262,7 +263,7 @@ This installation is for a bare-metal distributed setup where the server and eac
 
 ```bash
 git clone git@github.com:dream-lab/flotilla.git
-cd fedml-ng
+cd flotilla
 ```
 
 ### Build the containers
