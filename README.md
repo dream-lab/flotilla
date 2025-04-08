@@ -1,17 +1,31 @@
-# Flotilla
-Flotilla is a Python framework for federated learning that is designed to be extensible and easy to set up on a wide range of devices. It allows you to plug in your own client selection strategies, aggregation strategies, and models with minimal lines of code.
+# Flotilla: A Scalable, Modular and Resilient Federated Learning Framework for Heterogeneous Resources
+Flotilla is a federated learning framework that is designed to be extensible and deployed on a wide range of devices. Written in Python, it allows you to plug in your own client selection strategies, aggregation strategies and models with minimal lines of code. A number of popular FL strategies are provided out of the box. Flotilla is available under an Apache 2.0 license.
 
-### Features
+![Flotilla Logo](flotilla-logo.png "Flotilla Logo")
+
+## Credits
+Flotilla has been developed at the [DREAM:Lab](https://dream-lab.in), [Indian Institute of Science, Bangalore](https://iisc.ac.in), in collaboration with [BITS Pilani-Hyderabad](https://www.bits-pilani.ac.in/hyderabad/manik-gupta/).
+
+* **Citation:**
+"Flotilla: A Scalable, Modular and Resilient Federated Learning Framework for Heterogeneous Resources", Roopkatha Banerjee, Prince Modi, Jinal Vyas, Chunduru Sri Abhijit, Tejus Chandrashekar, Harsha Varun Marisetty, Manik Gupta and Yogesh Simmhan, 2025 *(under review)*
+
+## Features
 
 * **Extensibility:** Flotilla is designed to be extensible, so you can easily add your own custom components, such as:
-
-    * Client selection strategies: These strategies determine which clients will participate in each round of training.
-    * Aggregation strategies: These strategies combine the model updates from the clients into a single update for the global model.
-    * Models: Flotilla supports any PyTorch model, so you can use it to train a wide range of machine learning models.
+    * *Client selection strategies:* These strategies determine which clients will participate in each round of training.
+    * *Aggregation strategies:* These strategies combine the model updates from the clients into a single update for the global model.
+    * *Models:* Flotilla supports any PyTorch model, so you can use it to train a wide range of machine learning models.
 
 * **Ease of use:** Flotilla is easy to set up and use, even if you are new to federated learning. It provides a simple API for training and evaluating models, and it comes with a variety of example applications.
 
-* **Portability:** Flotilla can be run on a wide range of devices, from Raspberry Pis to GPU workstations. This makes it ideal for a variety of use cases, such as training models on mobile devices or on edge devices. It can also be run in a Dockerized environment with the server and clients running as containers.
+* **Portability:** Flotilla can be run on a wide range of devices, from Raspberry Pis to GPU workstations to Cloud VMs. This makes it ideal for a variety of use cases, such as training models on mobile devices or on edge devices. It can also be run in a Dockerized environment with the server and clients running as containers.
+
+* **Scalability:** Flotilla has been tested on 1000+ deployments of Docker clients. It's clients are stateless and the leader can be checkpointed and restored.
+
+## Design
+![Flotilla Architecture](flotilla-architecture.png "Flotilla Architecture")
+
+Flotilla consists of a leader and a set of clients.
 
 ## Bare Metal Installation
 
@@ -232,7 +246,8 @@ Add the model you want to train . If you want to add a custom model, add a model
     python flo_session.py <training_configuration> --federated_server_endpoint <server_ip>:12345
 
     ```
-
+---
+---
 ## Docker Installation
 This installation is for a bare-metal distributed setup where the server and each client is running on Docker containers.
 
@@ -313,4 +328,4 @@ This should sucessfully start the session.
 This code is released under Apache License, Version 2.0
 https://www.apache.org/licenses/LICENSE-2.0.txt
 
-Copyright (c) 2023 DREAM:Lab, Indian Institute of Science. All rights reserved.
+Copyright (c) 2025 DREAM:Lab, Indian Institute of Science. All rights reserved.
