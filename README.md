@@ -7,13 +7,14 @@ Flotilla is a federated learning framework that is designed to be extensible and
 Flotilla has been developed at the [DREAM:Lab](https://dream-lab.in), [Indian Institute of Science, Bangalore](https://iisc.ac.in), in collaboration with [BITS Pilani-Hyderabad](https://www.bits-pilani.ac.in/hyderabad/manik-gupta/).
 
 * **Citation:**
-"Flotilla: A Scalable, Modular and Resilient Federated Learning Framework for Heterogeneous Resources", Roopkatha Banerjee, Prince Modi, Jinal Vyas, Chunduru Sri Abhijit, Tejus Chandrashekar, Harsha Varun Marisetty, Manik Gupta and Yogesh Simmhan, 2025 *(under review)*
+"Flotilla: A Scalable, Modular and Resilient Federated Learning Framework for Heterogeneous Resources", [Roopkatha Banerjee](mailto:roopkathab@iisc.ac.in), Prince Modi, Jinal Vyas, Chunduru Sri Abhijit, Tejus Chandrashekar, Harsha Varun Marisetty, Manik Gupta and [Yogesh Simmhan](mailto:simmhan@iisc.ac.in), 2025 *(under review)*
 
+---
 ## Features
 
 * **Extensibility:** Flotilla is designed to be extensible, so you can easily add your own custom components, such as:
     * *Client selection strategies:* These strategies determine which clients will participate in each round of training.
-    * *Aggregation strategies:* These strategies combine the model updates from the clients into a single update for the global model.
+    * *Aggregation strategies:* These strategies combine the model updates from the clients into a single update for the global model. Both synchronous and asynchronous strategies are supported. E.g., TiFL, FedAT, FedAvg, FedAsync.
     * *Models:* Flotilla supports any PyTorch model, so you can use it to train a wide range of machine learning models.
 
 * **Ease of use:** Flotilla is easy to set up and use, even if you are new to federated learning. It provides a simple API for training and evaluating models, and it comes with a variety of example applications.
@@ -22,11 +23,14 @@ Flotilla has been developed at the [DREAM:Lab](https://dream-lab.in), [Indian In
 
 * **Scalability:** Flotilla has been tested on 1000+ deployments of Docker clients. It's clients are stateless and the leader can be checkpointed and restored.
 
+---
 ## Design
-![Flotilla Architecture](flotilla-architecture.png "Flotilla Architecture")
+![Flotilla Architecture](flotilla_architecture.png "Flotilla Architecture")
 
-Flotilla consists of a leader and a set of clients.
+Flotilla consists of a leader and a set of clients. The *leader* runs on a central server or a cloud VM while the *clients* run on various edge devices or machines hosting local training data. Clients advertise their availablity for FL training, their resource capacity and dataset details through an MQTT topic. When a user starts a FL session, they pass the model file and configuration to the leader. The leader selects clients for the first round of training based on the configured client selection strategy, and ships the models to the clients (if required). One round of training occurs at the clients. If using a sync FL strategy, aggregation happens at the leader after all clients report their local model to it, and the configured aggregation strategy is performed to get the global model. Another round of client selection by the leader and local training at those clients then occurs. This repeats for a certain number of training rounds or a quality threshold is reached, before the session stops at the leader. Clients are stateless and only require the local training data, Flotilla client scripts and model training framework (e.g., PyTorch) to be present. The leader is stateful and persists the session state to a local file for checkpointing or to a Redis store.
 
+---
+---
 ## Bare Metal Installation
 
 This installation is for a bare-metal distributed setup where the server and each client is running on different machines. First, make sure you have Python and  all the related dependencies like GCC installed. You can follow these steps:
