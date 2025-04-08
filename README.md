@@ -40,7 +40,7 @@ This installation is for a bare-metal distributed setup where the server and eac
 
 1. Clone the repo into your respective server and client machines:
     ```bash
-    git clone https://github.com/dream-lab/fedml-ng.git
+    git clone git@github.com:dream-lab/flotilla.git
     ``` 
 2. Use the following command to install the required dependencies from the `requirements.txt` file using pip:
     
@@ -261,7 +261,7 @@ This installation is for a bare-metal distributed setup where the server and eac
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/fedml-ng.git
+git clone git@github.com:dream-lab/flotilla.git
 cd fedml-ng
 ```
 
