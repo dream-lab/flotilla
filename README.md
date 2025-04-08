@@ -66,9 +66,9 @@ This installation is for a bare-metal distributed setup where the server and eac
 #### For Nvidia Jetson devices please make sure to install torch and torchvision as per your device's configuration. Please refer <a href="https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048" target="_blank">here.</a>
 
 ## Quick Setup
-For a quick configuration of running the Flotilla server and one Flotilla client on the same machine, we provide instructions for training the FACNN model on CIFAR10_IID.
+To test a sample Federated Learning (FL) workflow, follow these instructions for running the Flotilla server and one Flotilla client on the same machine to train the FACNN model on CIFAR10_IID
 
-After you clone the github repo, installed the requirements for the server and the client and optionally regenerated the protocol buffers, please download and unzip the following file.
+After cloning the GitHub repository, install the necessary requirements for both the server and the client. Optionally, regenerate the protocol buffers. Then, download and unzip the following file
 
 ```bash
 wget "https://www.dropbox.com/scl/fi/2oozukii5zvkt8643iohk/flotilla_quicksetup_data.zip?rlkey=1nkwzif43zpu3o9h46ismrxe2&st=7wa25qdm&dl=0" -O flotilla_quicksetup_data.zip
