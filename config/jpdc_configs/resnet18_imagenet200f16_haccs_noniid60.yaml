@@ -1,0 +1,61 @@
+session_config:
+  session_id: resnet18_imagenet200f16_haccs_iid
+  use_gpu: True
+  aggregator: fedavg
+  aggregator_args: None
+  client_selection: haccs
+  client_selection_args:
+    client_fraction: 0.5
+    num_tiers: 4
+    loss_latency_tradoff_param: 0.9
+  checkpoint_interval: 10
+  validation_round_interval: 1
+  generate_plots: False
+
+benchmark_config:
+  model_id: ResNet18
+  model_dir: ./models/ResNet18
+  model_class: ResNet18_Model
+  dataset: IMAGENET_NONIID60_F16_RANDOM_200
+  bench_minibatch_count: 500
+  batch_size: 8
+  learning_rate: 0.0001
+  timeout_duration_s: 180
+
+server_training_config:
+  model_dir: ./models/ResNet18
+  global_model_validation_batch_size: 8
+  num_training_rounds: 1000
+  training_timeout_secs: 20000
+  
+
+client_training_config:
+  model_id: ResNet18
+  model_class: ResNet18_Model
+  dataset: IMAGENET_NONIID60_F16_RANDOM_200
+  epochs: 2
+  batch_size: 8
+  learning_rate: 0
+  train_timeout_duration_s: 1000
+  loss_function: crossentropy
+  loss_function_custom: True
+  optimizer: adam
+  optimizer_custom: True
+
+model_config:
+  use_custom_dataloader: False
+  custom_loader_args: None
+
+  use_custom_trainer: True
+  custom_trainer_args:
+    lr: 0.0005
+    momentum: 0.9
+    weight_decay: 0
+
+  use_custom_validator: True
+  custom_validator_args: None
+
+  model_args:
+    num_classes: 200
+    dropout_rate: 0.1
+    torch_manual_seed: 0

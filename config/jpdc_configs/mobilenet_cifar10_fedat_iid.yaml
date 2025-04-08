@@ -1,0 +1,54 @@
+session_config:
+  session_id: mobilenet_cifar10_fedat_iid
+  use_gpu: True
+  aggregator: fedat
+  aggregator_args: None
+  client_selection: fedat
+  client_selection_args:
+    num_tiers: 4
+    num_clients_selected_per_tier: 2
+  checkpoint_interval: 10
+  validation_round_interval: 1
+  generate_plots: False
+
+benchmark_config:
+  model_id: MobileNet
+  model_dir: ./models/MobileNet
+  model_class: MobileNet
+  dataset: CIFAR10
+  bench_minibatch_count: 500
+  batch_size: 8
+  learning_rate: 0.0001
+  timeout_duration_s: 180
+
+server_training_config:
+  model_dir: ./models/MobileNet
+  global_model_validation_batch_size: 32
+  num_training_rounds: 200
+
+client_training_config:
+  model_id: MobileNet
+  model_class: MobileNet
+  dataset: CIFAR10
+  epochs: 5
+  batch_size: 8
+  learning_rate: 0.0001
+  train_timeout_duration_s: 1200
+  loss_function: crossentropy
+  loss_function_custom: True
+  optimizer: adam
+  optimizer_custom: True
+
+model_config:
+  use_custom_dataloader: False
+  custom_loader_args: None
+
+  use_custom_trainer: False
+  custom_trainer_args: None
+
+  use_custom_validator: False
+  custom_validator_args: None
+
+  model_args:
+    num_classes: 10
+    dropout: 0.2

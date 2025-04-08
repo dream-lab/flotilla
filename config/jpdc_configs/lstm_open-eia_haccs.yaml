@@ -1,0 +1,68 @@
+session_config:
+  session_id: lstm_open-eia_haccs
+  use_gpu: False
+  aggregator: fedavg 
+  aggregator_args: None
+  client_selection: haccs
+  client_selection_args:
+    client_fraction: 0.11
+    num_tiers: 3
+    loss_latency_tradeoff_param: 0.5
+  checkpoint_interval: 10
+  validation_round_interval: 1
+  generate_plots: False
+
+
+benchmark_config:
+  model_id: LSTM
+  model_dir: ./models/LSTM
+  model_class: LSTMModel
+  dataset: OpenEIA-CA
+  bench_minibatch_count: 500
+  batch_size: 16
+  learning_rate: 0.0001
+  timeout_duration_s: 10
+
+server_training_config:
+  model_dir: ./models/LSTM
+  global_model_validation_batch_size: 100
+  num_training_rounds: 50
+
+
+client_training_config:
+  model_id: LSTM
+  model_class: LSTMModel
+  dataset: OpenEIA-CA
+  epochs: 2
+  batch_size: 16
+  learning_rate: 0.00001
+  train_timeout_duration_s: 600
+  loss_function: crossentropy
+  loss_function_custom: True
+  optimizer: adam
+  optimizer_custom: True
+
+model_config: # use as defaults
+  use_custom_dataloader: True
+  custom_loader_args:
+    lookback: 5
+    pred_forward: 2
+    normalize_data: True
+
+  use_custom_trainer: True
+  custom_trainer_args:
+    clip: 5
+
+  use_custom_validator: True
+  custom_validator_args: 
+    test_data_path: /home/fedml/fedml-ng/val_data/OpenEIA-CA/test
+    plot_predictions: False
+    dump_metrics: True
+    metrics_dir: ./LSTM_OpenEIA-CA_tifl
+
+  model_args:
+    input_dim: 1
+    hidden_dim: 128
+    output_dim: 2
+    layer_num: 1
+    cell: LSTM
