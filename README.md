@@ -7,7 +7,7 @@ Flotilla is a federated learning framework that is designed to be extensible and
 Flotilla has been developed at the [DREAM:Lab](https://dream-lab.in), [Indian Institute of Science, Bangalore](https://iisc.ac.in), in collaboration with [BITS Pilani-Hyderabad](https://www.bits-pilani.ac.in/hyderabad/manik-gupta/).
 
 * **Citation:**
-"Flotilla: A Scalable, Modular and Resilient Federated Learning Framework for Heterogeneous Resources", [Roopkatha Banerjee](mailto:roopkathab@iisc.ac.in), Prince Modi, Jinal Vyas, Chunduru Sri Abhijit, Tejus Chandrashekar, Harsha Varun Marisetty, Manik Gupta and [Yogesh Simmhan](mailto:simmhan@iisc.ac.in), *Journal of Parallel and Distributed Computing (JPDC)*, 2025 *(to appear)*
+"Flotilla: A Scalable, Modular and Resilient Federated Learning Framework for Heterogeneous Resources", [Roopkatha Banerjee](mailto:roopkathab@iisc.ac.in), Prince Modi, Jinal Vyas, Chunduru Sri Abhijit, Tejus Chandrashekar, Harsha Varun Marisetty, Manik Gupta and [Yogesh Simmhan](mailto:simmhan@iisc.ac.in), *Journal of Parallel and Distributed Computing (JPDC)*, Volume 203, September 2025, Elsevier [doi](https://doi.org/10.1016/j.jpdc.2025.105103) [arxiv](https://arxiv.org/abs/2507.02295)
 
 ---
 ## Features
